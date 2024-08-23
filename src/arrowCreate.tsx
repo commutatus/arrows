@@ -8,7 +8,7 @@ import { castToAnchor } from './anchor';
 import { headTransformCSS, HeadWithPoint, HEAD } from './head';
 
 export const Arrow = ({
-  className, head, from, to, forwardRef, updateDelay,
+  className, head, from, to, forwardRef, updateDelay, onClick
 }: IArrowComponentProps): JSX.Element => {
   const [arrow, setArrow] = useState(() => arrowVector(from, to, head));
 
@@ -47,14 +47,14 @@ export const Arrow = ({
       height={arrow.size.height}
       ref={forwardRef}
     >
-      <path className={`${className}__path`} d={arrow.pathCommands} />
+      <path className={`${className}__path${onClick ? " clickable" : ""}`} d={arrow.pathCommands} onClick={onClick || null} />
       {arrow.heads.map(renderHead)}
     </svg>
   );
 };
 
 const arrowCreate = ({
-  className = 'arrow', head = HEAD.THIN, from, to, updateDelay,
+  className = 'arrow', head = HEAD.THIN, from, to, updateDelay, onClick
 }: IArrowProps): IArrow => {
   const arrowRef = createRef<SVGSVGElement>()
   const node = document.createDocumentFragment();
@@ -70,6 +70,7 @@ const arrowCreate = ({
       to={castToAnchor(to)}
       forwardRef={arrowRef}
       updateDelay={updateDelay}
+      onClick={onClick}
     />,
     node,
   );

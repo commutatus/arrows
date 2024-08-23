@@ -12,6 +12,7 @@ export interface IArrowProps {
   from: Anchor | HTMLElement | (() => HTMLElement),
   to: Anchor | HTMLElement | (() => HTMLElement),
   updateDelay?: number,
+  onClick?: () => void,
 }
 
 export interface IArrowComponentProps {
@@ -21,4 +22,5 @@ export interface IArrowComponentProps {
   to: Anchor,
   forwardRef?: { current: SVGSVGElement | null },
   updateDelay?: number,
+  onClick?: () => void,
 }

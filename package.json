@@ -1,5 +1,5 @@
 {
-  "name": "arrows-svg",
+  "name": "@commutatus/arrows-svg",
   "version": "1.8.1",
   "description": "SVG arrow between two HTML elements",
   "keywords": [
